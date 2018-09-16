@@ -1,0 +1,148 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fb730 .scope module, "behavioralMultiplexer" "behavioralMultiplexer" 2 9;
+ .timescale -9 -12;
+v0x81e670_0 .net "address", 1 0, L_0x8423e0; 1 drivers
+v0x8409b0_0 .net "address0", 0 0, C4<z>; 0 drivers
+v0x840a50_0 .net "address1", 0 0, C4<z>; 0 drivers
+v0x840af0_0 .net "in0", 0 0, C4<z>; 0 drivers
+v0x840ba0_0 .net "in1", 0 0, C4<z>; 0 drivers
+v0x840c40_0 .net "in2", 0 0, C4<z>; 0 drivers
+v0x840d20_0 .net "in3", 0 0, C4<z>; 0 drivers
+v0x840dc0_0 .net "inputs", 3 0, L_0x842220; 1 drivers
+v0x840eb0_0 .net "out", 0 0, L_0x842510; 1 drivers
+L_0x842220 .concat [ 1 1 1 1], C4<z>, C4<z>, C4<z>, C4<z>;
+L_0x8423e0 .concat [ 1 1 0 0], C4<z>, C4<z>;
+L_0x842510 .part/v L_0x842220, L_0x8423e0, 1;
+S_0x7fae40 .scope module, "testMultiplexer" "testMultiplexer" 3 5;
+ .timescale -9 -12;
+v0x841db0_0 .var "address0", 0 0;
+v0x841e30_0 .var "address1", 0 0;
+v0x841eb0_0 .var "in0", 0 0;
+v0x841f60_0 .var "in1", 0 0;
+v0x842040_0 .var "in2", 0 0;
+v0x8420f0_0 .var "in3", 0 0;
+v0x842170_0 .net "out", 0 0, L_0x8431f0; 1 drivers
+S_0x840f50 .scope module, "multiplexer" "structuralMultiplexer" 3 12, 2 22, S_0x7fae40;
+ .timescale -9 -12;
+L_0x8416b0/d .functor AND 1, v0x841db0_0, v0x841e30_0, C4<1>, C4<1>;
+L_0x8416b0 .delay (50000,50000,50000) L_0x8416b0/d;
+L_0x842760/d .functor AND 1, v0x8420f0_0, L_0x8416b0, C4<1>, C4<1>;
+L_0x842760 .delay (50000,50000,50000) L_0x842760/d;
+L_0x8428a0/d .functor XOR 1, v0x841db0_0, v0x841e30_0, C4<0>, C4<0>;
+L_0x8428a0 .delay (50000,50000,50000) L_0x8428a0/d;
+L_0x842940/d .functor AND 1, v0x841db0_0, L_0x8428a0, C4<1>, C4<1>;
+L_0x842940 .delay (50000,50000,50000) L_0x842940/d;
+L_0x842a70/d .functor AND 1, v0x841e30_0, L_0x8428a0, C4<1>, C4<1>;
+L_0x842a70 .delay (50000,50000,50000) L_0x842a70/d;
+L_0x842ba0/d .functor AND 1, v0x841f60_0, L_0x842940, C4<1>, C4<1>;
+L_0x842ba0 .delay (50000,50000,50000) L_0x842ba0/d;
+L_0x842cd0/d .functor AND 1, v0x842040_0, L_0x842a70, C4<1>, C4<1>;
+L_0x842cd0 .delay (50000,50000,50000) L_0x842cd0/d;
+L_0x842e10/d .functor NOT 1, v0x841db0_0, C4<0>, C4<0>, C4<0>;
+L_0x842e10 .delay (50000,50000,50000) L_0x842e10/d;
+L_0x842eb0/d .functor NOT 1, v0x841e30_0, C4<0>, C4<0>, C4<0>;
+L_0x842eb0 .delay (50000,50000,50000) L_0x842eb0/d;
+L_0x842f60/d .functor AND 1, L_0x842e10, L_0x842eb0, C4<1>, C4<1>;
+L_0x842f60 .delay (50000,50000,50000) L_0x842f60/d;
+L_0x843100/d .functor AND 1, L_0x842f60, v0x841eb0_0, C4<1>, C4<1>;
+L_0x843100 .delay (50000,50000,50000) L_0x843100/d;
+L_0x8431f0/d .functor OR 1, L_0x843100, L_0x842ba0, L_0x842cd0, L_0x842760;
+L_0x8431f0 .delay (50000,50000,50000) L_0x8431f0/d;
+v0x841040_0 .net "a0anda1", 0 0, L_0x8416b0; 1 drivers
+v0x841100_0 .net "a0only", 0 0, L_0x842940; 1 drivers
+v0x8411a0_0 .net "a0xora1", 0 0, L_0x8428a0; 1 drivers
+v0x841240_0 .net "a1only", 0 0, L_0x842a70; 1 drivers
+v0x8412c0_0 .net "address0", 0 0, v0x841db0_0; 1 drivers
+v0x841360_0 .net "address1", 0 0, v0x841e30_0; 1 drivers
+v0x841400_0 .net "in0", 0 0, v0x841eb0_0; 1 drivers
+v0x8414a0_0 .net "in0select", 0 0, L_0x843100; 1 drivers
+v0x841590_0 .net "in1", 0 0, v0x841f60_0; 1 drivers
+v0x841630_0 .net "in1select", 0 0, L_0x842ba0; 1 drivers
+v0x841730_0 .net "in2", 0 0, v0x842040_0; 1 drivers
+v0x8417d0_0 .net "in2select", 0 0, L_0x842cd0; 1 drivers
+v0x8418e0_0 .net "in3", 0 0, v0x8420f0_0; 1 drivers
+v0x841980_0 .net "in3select", 0 0, L_0x842760; 1 drivers
+v0x841aa0_0 .net "n0", 0 0, L_0x842e10; 1 drivers
+v0x841b40_0 .net "n0andn1", 0 0, L_0x842f60; 1 drivers
+v0x841a00_0 .net "n1", 0 0, L_0x842eb0; 1 drivers
+v0x841c90_0 .alias "out", 0 0, v0x842170_0;
+    .scope S_0x7fae40;
+T_0 ;
+    %vpi_call 3 15 "$display", "in0 in1 in2 in3| a0 a1| out | Expected Output";
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 0, 1;
+    %set/v v0x841e30_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 17 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 0", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 1, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 0, 1;
+    %set/v v0x841e30_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 19 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 1", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 1, 1;
+    %set/v v0x841e30_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 0", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 1, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 1, 1;
+    %set/v v0x841e30_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 23 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 1", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 0, 1;
+    %set/v v0x841e30_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 0", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 1, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 0, 1;
+    %set/v v0x841e30_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 1", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 0, 1;
+    %set/v v0x841db0_0, 1, 1;
+    %set/v v0x841e30_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 29 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 0", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %set/v v0x841eb0_0, 0, 1;
+    %set/v v0x841f60_0, 0, 1;
+    %set/v v0x842040_0, 0, 1;
+    %set/v v0x8420f0_0, 1, 1;
+    %set/v v0x841db0_0, 1, 1;
+    %set/v v0x841e30_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 31 "$display", "%b   %b   %b   %b  | %b  %b |  %b  | 1", v0x841eb0_0, v0x841f60_0, v0x842040_0, v0x8420f0_0, v0x841db0_0, v0x841e30_0, v0x842170_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./multiplexer.v";
+    "multiplexer.t.v";
