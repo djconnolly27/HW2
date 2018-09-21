@@ -30,4 +30,11 @@ module testMultiplexer ();
   in0=0;in1=0;in2=0;in3=1;address0=1;address1=1; #1000
   $display("%b   %b   %b   %b  | %b  %b |  %b  | 1", in0, in1, in2, in3, address0, address1, out);
   end
+
+  initial begin
+  in0=0;in1=0;in2=0;in3=0;address0=0;address1=0; #1000
+  $dumpfile("multiplexer.vcd");
+  $dumpvars(0, testMultiplexer);
+  end
+
 endmodule

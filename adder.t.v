@@ -28,4 +28,10 @@ module testFullAdder();
     a=1;b=1;carryin=1; #1000
     $display("%b %b %b       | %b  %b         |            1   1", a, b, carryin, sum, carryout);
     end
+
+    initial begin
+    a=0;b=0;carryin=0; #1000
+    $dumpfile("fullAdder.vcd");
+    $dumpvars(0, testFullAdder);
+    end
   endmodule

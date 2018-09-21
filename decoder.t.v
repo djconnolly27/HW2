@@ -28,6 +28,13 @@ module testDecoder ();
     $display("%b  %b  %b |  %b  %b  %b  %b | O2 Only", enable, addr0, addr1, out0, out1, out2, out3);
     enable=1;addr0=1;addr1=1; #1000
     $display("%b  %b  %b |  %b  %b  %b  %b | O3 Only", enable, addr0, addr1, out0, out1, out2, out3);
+    $finish();
+    end
+
+    initial begin
+    enable=0;addr0=0;addr1=0; #1000
+    $dumpfile("decoder.vcd");
+    $dumpvars(0, testDecoder);
     end
 
 endmodule

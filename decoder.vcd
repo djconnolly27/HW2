@@ -1,0 +1,105 @@
+$date
+	Wed Sep 19 15:16:54 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testDecoder $end
+$var wire 1 ! out0 $end
+$var wire 1 " out1 $end
+$var wire 1 # out2 $end
+$var wire 1 $ out3 $end
+$var reg 1 % addr0 $end
+$var reg 1 & addr1 $end
+$var reg 1 ' enable $end
+$scope module decoder $end
+$var wire 1 ( a0enable $end
+$var wire 1 ) a1enable $end
+$var wire 1 * address0 $end
+$var wire 1 + address1 $end
+$var wire 1 , enable $end
+$var wire 1 - na0andna1 $end
+$var wire 1 . na0enable $end
+$var wire 1 / na1enable $end
+$var wire 1 ! out0 $end
+$var wire 1 " out1 $end
+$var wire 1 # out2 $end
+$var wire 1 $ out3 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#1000000
+$dumpvars
+1/
+1.
+1-
+0,
+0+
+1*
+0)
+0(
+0'
+0&
+1%
+0$
+0#
+0"
+0!
+$end
+#2000000
+1&
+1+
+0%
+0*
+#3000000
+1%
+1*
+#4000000
+0&
+0+
+0%
+0*
+1'
+1,
+#4050000
+1!
+#5000000
+1%
+1*
+#5050000
+1(
+#5100000
+0.
+1"
+#5150000
+0-
+#5200000
+0!
+#6000000
+1&
+1+
+0%
+0*
+#6050000
+1)
+0(
+#6100000
+0/
+1.
+0"
+#6150000
+1#
+#7000000
+1%
+1*
+#7050000
+1(
+#7100000
+0.
+1$
+#7150000
+0#
+#8000000
